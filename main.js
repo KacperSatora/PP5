@@ -27,5 +27,5 @@ function f2() {
     document.getElementById("kod-pocztowy").value = 32020;
     document.getElementById("uwagi").value = "brak";
     document.getElementById("branza").value = 1;
-    document.getElementById("btncheck1").value = "true";
+    document.getElementById("btncheck1").value = "false";
 }
