@@ -10,7 +10,7 @@
 
 <body>
     <div class="p-5">
-        <form onsubmit="f1(event)" id="test-form">
+        <form onsubmit="f1(event)" id="customer-form" class="p-3 ">
 
             <div class="mb-3">
                 <label for="nazwa-firmy" class="form-label">Nazwa Firmy</label>
@@ -61,7 +61,16 @@
             <button type="submit" class="btn btn-primary">Submit</button>
 
         </form>
-        <button class="btn btn-primary" onclick="f2()">Fill</button>
+        <!-- List klientów -->
+        <div class="customer-list pl-3">
+            <ul class="list-group" id="customer-list">
+            </ul>
+        </div>
+        <div class="p-3">
+            <button class="btn btn-primary" onclick="f2()">Fill</button>
+            <button class="btn btn-primary" onclick="showForm()">Show Form</button>
+            <button class="btn btn-primary" onclick="hideForm()">Show Customers</button>
+        </div>
     </div>
     <script src="main.js"></script>
 
