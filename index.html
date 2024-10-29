@@ -5,12 +5,12 @@
     <link rel="stylesheet" href="css/custom.css" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Form SPA</title>
 </head>
 
 <body>
     <div class="p-5">
-        <form onsubmit="addCustomer(event)" id="customer-form" class="p-3 ">
+        <form onsubmit="addCustomer(event)" id="customer-form" class="">
 
             <div class="mb-3">
                 <label for="nazwa-firmy" class="form-label">Nazwa Firmy</label>
@@ -47,9 +47,9 @@
             <div class="form-floating  mb-3">
                 <select class="form-select" id="branza" aria-label="Floating label select example">
                     <option selected>Wybierz</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option value="1">IT</option>
+                    <option value="2">Transport</option>
+                    <option value="3">Handel</option>
                 </select>
                 <label for="branza">Branża</label>
             </div>
@@ -65,8 +65,8 @@
         <div class="customer-list pb-3">
             <ul class="list-group" id="customer-list"></ul>
         </div>
-        <div class="">
-            <button class="btn btn-primary" onclick="fillData()">Fill</button>
+        <div class="d-flex flex-row justify-content-start me-3">
+            <button class="btn btn-primary" id="fill-data-button" onclick="fillData()">Fill</button>
             <button class="btn btn-primary" onclick="showForm()">Show Form</button>
             <button class="btn btn-primary" onclick="hideForm()">Show Customers</button>
         </div>

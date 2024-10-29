@@ -39,10 +39,8 @@ function addCustomer(e) {
     }
     hideForm();
 
-    var elements = document.getElementById("customer-form");
-    for (var i = 0; i < elements.length; i++) {
-        elements[i].value = "";
-    }
+    document.getElementById("customer-form").reset()
+
 }
 
 function fillData() {
@@ -59,16 +57,10 @@ function fillData() {
 }
 
 function editField(name) {
-    let intendedCustomerIndex;
-    // operate on array, so that customer can be edited directly instead of pushing one
-    for (let index = 0; index < customers.length; index++) {
-        const element = customers[index];
-        if (customers[index].nazwaFirmy === name) {
-            intendedCustomerIndex = index;
-        }
-    }
+    const intendedCustomerIndex = customers.indexOf(customers.find(
+        c => c.nazwaFirmy === name)
+    );
 
-    console.log(customers[intendedCustomerIndex]);
     document.getElementById("nazwa-firmy").value = customers[intendedCustomerIndex].nazwaFirmy;
     document.getElementById("nip").value = customers[intendedCustomerIndex].NIP;
     document.getElementById("miasto").value = customers[intendedCustomerIndex].miasto;
@@ -84,10 +76,12 @@ function editField(name) {
 
 function showForm() {
     document.getElementById('customer-form').style.display = 'block'
+    document.getElementById('fill-data-button').style.display = 'block'
     document.getElementById('customer-list').style.display = 'none'
 }
 
 function hideForm() {
     document.getElementById('customer-form').style.display = 'none'
+    document.getElementById('fill-data-button').style.display = 'none'
     document.getElementById('customer-list').style.display = 'block'
 }
