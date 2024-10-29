@@ -1,6 +1,9 @@
-const customers = []
+// TODO:
+// add an ID to a customer, so that two of them can coexist under the same name
 
-function f1(e) {
+const customers = [];
+
+function addCustomer(e) {
     e.preventDefault();
 
     const customerData = {
@@ -13,17 +16,28 @@ function f1(e) {
         kodPocztowy: document.getElementById("kod-pocztowy").value,
         uwagi: document.getElementById("uwagi").value,
         branza: document.getElementById("branza").value,
-        checkbox: document.getElementById("btncheck1").value
+        checkbox: document.getElementById("btncheck1").value,
     };
 
-    customers.push(customerData)
+    let existingCustomer = customers.find(obj => obj.nazwaFirmy === document.getElementById("nazwa-firmy").value);
+    if (!existingCustomer) {
+        customers.push(customerData)
+        let ul = document.getElementById("customer-list");
+        ul.innerHTML += `<li class="list-group-item d-flex justify-content-between align-items-center">${customerData.nazwaFirmy}<button class="btn btn-primary" onclick="editField('${customerData.nazwaFirmy}')">Edit</button></li>`;
+    } else {
+        let index = customers.indexOf(existingCustomer)
+        customers[index].nazwaFirmy = document.getElementById("nazwa-firmy").value
+        customers[index].NIP = document.getElementById("nip").value
+        customers[index].miasto = document.getElementById("miasto").value
+        customers[index].ulica = document.getElementById("ulica").value
+        customers[index].numerDomu = document.getElementById("numer-domu").value
+        customers[index].numerMieszkania = document.getElementById("number-mieszkania").value
+        customers[index].kodPocztowy = document.getElementById("kod-pocztowy").value
+        customers[index].uwagi = document.getElementById("uwagi").value
+        customers[index].branza = document.getElementById("branza").value
+        customers[index].checkbox = document.getElementById("btncheck1").value
+    }
     hideForm();
-
-    let ul = document.getElementById("customer-list");
-    ul.innerHTML += `<li class="list-group-item">${customerData.nazwaFirmy}<button class="btn btn-primary" onclick="editField('${customerData.nazwaFirmy}')">Edit</button></li>`;
-
-    console.log(customerData);
-
 
     var elements = document.getElementById("customer-form");
     for (var i = 0; i < elements.length; i++) {
@@ -31,7 +45,7 @@ function f1(e) {
     }
 }
 
-function f2() {
+function fillData() {
     document.getElementById("nazwa-firmy").value = "Super Firma";
     document.getElementById("nip").value = "1122334455";
     document.getElementById("miasto").value = "Krakow";
@@ -45,27 +59,26 @@ function f2() {
 }
 
 function editField(name) {
-    let intendedCustomer;
+    let intendedCustomerIndex;
     // operate on array, so that customer can be edited directly instead of pushing one
-    customers.forEach(element => {
-        
-        if (element.nazwaFirmy === name) {
-            intendedCustomer = element;
+    for (let index = 0; index < customers.length; index++) {
+        const element = customers[index];
+        if (customers[index].nazwaFirmy === name) {
+            intendedCustomerIndex = index;
         }
-    });
+    }
 
-    console.log(intendedCustomer);
-
-    document.getElementById("nazwa-firmy").value = intendedCustomer.nazwaFirmy;
-    document.getElementById("nip").value = intendedCustomer.NIP;
-    document.getElementById("miasto").value = intendedCustomer.miasto;
-    document.getElementById("ulica").value = intendedCustomer.ulica;
-    document.getElementById("numer-domu").value = intendedCustomer.numerDomu;
-    document.getElementById("number-mieszkania").value = intendedCustomer.numerMieszkania;
-    document.getElementById("kod-pocztowy").value = intendedCustomer.kodPocztowy;
-    document.getElementById("uwagi").value = intendedCustomer.uwagi;
-    document.getElementById("branza").value = intendedCustomer.branza;
-    document.getElementById("btncheck1").value = intendedCustomer.checkbox;
+    console.log(customers[intendedCustomerIndex]);
+    document.getElementById("nazwa-firmy").value = customers[intendedCustomerIndex].nazwaFirmy;
+    document.getElementById("nip").value = customers[intendedCustomerIndex].NIP;
+    document.getElementById("miasto").value = customers[intendedCustomerIndex].miasto;
+    document.getElementById("ulica").value = customers[intendedCustomerIndex].ulica;
+    document.getElementById("numer-domu").value = customers[intendedCustomerIndex].numerDomu;
+    document.getElementById("number-mieszkania").value = customers[intendedCustomerIndex].numerMieszkania;
+    document.getElementById("kod-pocztowy").value = customers[intendedCustomerIndex].kodPocztowy;
+    document.getElementById("uwagi").value = customers[intendedCustomerIndex].uwagi;
+    document.getElementById("branza").value = customers[intendedCustomerIndex].branza;
+    document.getElementById("btncheck1").value = customers[intendedCustomerIndex].checkbox;
     showForm();
 }
 
