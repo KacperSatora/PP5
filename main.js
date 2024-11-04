@@ -2,6 +2,7 @@
 // add an ID to a customer, so that two of them can coexist under the same name
 
 const customers = [];
+const formInputs = ["nazwa-firmy", "nip", "miasto", "ulica", "numer-domu", "number-mieszkania", "kod-pocztowy", "uwagi", "branza", "btncheck1"];
 
 function addCustomer(e) {
     e.preventDefault();
@@ -38,8 +39,8 @@ function addCustomer(e) {
         customers[index].checkbox = document.getElementById("btncheck1").value
     }
     hideForm();
-
-    document.getElementById("customer-form").reset()
+    unlockForm();
+    clearForm();
 
 }
 
@@ -54,6 +55,7 @@ function fillData() {
     document.getElementById("uwagi").value = "brak";
     document.getElementById("branza").value = 1;
     document.getElementById("btncheck1").value = "false";
+    lockForm()
 }
 
 function editField(name) {
@@ -76,12 +78,31 @@ function editField(name) {
 
 function showForm() {
     document.getElementById('customer-form').style.display = 'block'
-    document.getElementById('fill-data-button').style.display = 'block'
+    document.getElementById('fill-data-button').style.display = 'inline-block'
+    document.getElementById('clear-form-button').style.display = 'inline-block'
     document.getElementById('customer-list').style.display = 'none'
 }
 
 function hideForm() {
     document.getElementById('customer-form').style.display = 'none'
     document.getElementById('fill-data-button').style.display = 'none'
+    document.getElementById('clear-form-button').style.display = 'none'
     document.getElementById('customer-list').style.display = 'block'
+}
+
+function lockForm() {
+    formInputs.forEach(formId => {
+        document.getElementById(formId).readOnly = true;
+    });
+}
+
+function unlockForm() {
+    formInputs.forEach(formId => {
+        document.getElementById(formId).readOnly = false;
+    });
+}
+
+function clearForm() {
+    document.getElementById("customer-form").reset()
+    unlockForm();
 }
