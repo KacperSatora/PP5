@@ -46,9 +46,9 @@ class Customer {
 }
 
 class Supplier extends Customer {
-    constructor(num) {
+    constructor(num: number) {
         super();
-        numerKonta = num;
+        const numerKonta = num;
     };
     faktury = []
 }
