@@ -6,25 +6,39 @@ const formInputs = ["nazwa-firmy", "nip", "miasto", "ulica", "numer-domu", "numb
 
 function addCustomer(e) {
     e.preventDefault();
+    let newCustomer = new Customer();
+    // newCustomer.nazwaFirmy = document.getElementById("nazwa-firmy").value
+    // ...
 
-    const customerData = {
-        nazwaFirmy: document.getElementById("nazwa-firmy").value,
-        NIP: document.getElementById("nip").value,
-        miasto: document.getElementById("miasto").value,
-        ulica: document.getElementById("ulica").value,
-        numerDomu: document.getElementById("numer-domu").value,
-        numerMieszkania: document.getElementById("number-mieszkania").value,
-        kodPocztowy: document.getElementById("kod-pocztowy").value,
-        uwagi: document.getElementById("uwagi").value,
-        branza: document.getElementById("branza").value,
-        checkbox: document.getElementById("btncheck1").value,
-    };
+    newCustomer.nazwaFirmy = document.getElementById("nazwa-firmy").value
+    newCustomer.NIP = document.getElementById("nip").value
+    newCustomer.miasto = document.getElementById("miasto").value
+    newCustomer.ulica = document.getElementById("ulica").value
+    newCustomer.numerDomu = document.getElementById("numer-domu").value
+    newCustomer.numerMieszkania = document.getElementById("number-mieszkania").value
+    newCustomer.kodPocztowy = document.getElementById("kod-pocztowy").value
+    newCustomer.uwagi = document.getElementById("uwagi").value
+    newCustomer.branza = document.getElementById("branza").value
+    newCustomer.checkbox = document.getElementById("btncheck1").value
+
+    // const newCustomer = {
+    //     nazwaFirmy: document.getElementById("nazwa-firmy").value,
+    //     NIP: document.getElementById("nip").value,
+    //     miasto: document.getElementById("miasto").value,
+    //     ulica: document.getElementById("ulica").value,
+    //     numerDomu: document.getElementById("numer-domu").value,
+    //     numerMieszkania: document.getElementById("number-mieszkania").value,
+    //     kodPocztowy: document.getElementById("kod-pocztowy").value,
+    //     uwagi: document.getElementById("uwagi").value,
+    //     branza: document.getElementById("branza").value,
+    //     checkbox: document.getElementById("btncheck1").value,
+    // };
 
     let existingCustomer = customers.find(obj => obj.nazwaFirmy === document.getElementById("nazwa-firmy").value);
     if (!existingCustomer) {
-        customers.push(customerData)
+        customers.push(newCustomer)
         let ul = document.getElementById("customer-list");
-        ul.innerHTML += `<li class="list-group-item d-flex justify-content-between align-items-center">${customerData.nazwaFirmy}<button class="btn btn-primary" onclick="editField('${customerData.nazwaFirmy}')">Edit</button></li>`;
+        ul.innerHTML += `<li class="list-group-item d-flex justify-content-between align-items-center">${newCustomer.getData()}<button class="btn btn-primary" onclick="editField('${newCustomer.nazwaFirmy}')">Edit</button></li>`;
     } else {
         let index = customers.indexOf(existingCustomer)
         customers[index].nazwaFirmy = document.getElementById("nazwa-firmy").value
