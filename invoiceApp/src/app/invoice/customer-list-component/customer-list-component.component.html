@@ -1,0 +1,7 @@
+<app-customer-list-element-component
+    *ngFor="let customer of customerList"
+    [customer] = "customer"
+    (deletedCustomerEvent)="deleteCustomer($event)"
+></app-customer-list-element-component>
+
+<button class="btn" (click)="redirectToForm()">return to form</button>
