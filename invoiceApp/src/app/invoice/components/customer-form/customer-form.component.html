@@ -1,25 +1,31 @@
 {{customer | json}}
-<form id="client-form" (ngSubmit)="saveData()" class="">
+<form id="client-form" (ngSubmit)="saveData(customerForm)" class="" #customerForm="ngForm">
     <input type="hidden" id="editIndex" value="">
     <div class="mb-3">
         <label for="inputName" class="form-label">Nazwa Firmy</label>
-        <input type="text" class="form-control" id="inputName" required name="name" [(ngModel)]="customer.name">
+        <input type="text" class="form-control" id="inputName" name="name" #name="ngModel" [(ngModel)]="customer.name"
+            required>
+        <!-- <div class="invalid-feedback" [hidden]="name.valid || name.untouched" class="alert alert-danger">Pole nie może być puste</div> -->
+        <div class="alert alert-danger" *ngIf="name.invalid && customerForm.submitted">Pole nie może być puste</div>
     </div>
     <div class="mb-3">
         <label for="inputNIP" class="form-label">NIP</label>
-        <input type="text" class="form-control" pattern="\d{10}" title="NIP musi składać się z 10 cyfr" id="inputNIP" name="nip" [(ngModel)]="customer.nip">
+        <input type="text" class="form-control" title="NIP musi składać się z 10 cyfr" id="inputNIP" name="nip"
+            #nip="ngModel" [(ngModel)]="customer.nip" required>
+        <div class="invalid-feedback" [hidden]="nip.untouched || nip.valid" class="alert alert-danger">Pole nie może być
+            puste</div>
     </div>
     <div class="mb-3">
         <label for="inputMiasto" class="form-label">Miasto</label>
-        <input type="text" class="form-control" id="inputMiasto" placeholder="Kraków" required >
+        <input type="text" class="form-control" id="inputMiasto" placeholder="Kraków">
     </div>
     <div class="mb-3">
         <label for="inputUlica" class="form-label">Ulica</label>
-        <input type="text" class="form-control" id="inputUlica" placeholder="Krakowska" required>
+        <input type="text" class="form-control" id="inputUlica" placeholder="Krakowska">
     </div>
     <div class="mb-3">
         <label for="inputNumber" class="form-label">Numer Domu</label>
-        <input type="text" class="form-control" id="inputNumber" required>
+        <input type="text" class="form-control" id="inputNumber">
     </div>
     <div class="mb-3">
         <label for="inputNumberM" class="form-label">Numer Mieszkania</label>
@@ -27,14 +33,15 @@
     </div>
     <div class="mb-3">
         <label for="inputKod" class="form-label">Kod Pocztowy</label>
-        <input type="text" class="form-control" pattern="\d{2}-\d{3}" title="Kod pocztowy musi mieć format xx-xxx" id="inputKod" required>
+        <input type="text" class="form-control" pattern="\d{2}-\d{3}" title="Kod pocztowy musi mieć format xx-xxx"
+            id="inputKod">
     </div>
     <div class="mb-3">
         <label for="inputUwagi">Uwagi</label>
         <textarea class="form-control" placeholder="Zostaw uwagi tutaj" id="inputUwagi"></textarea>
     </div>
     <div class="form-floating mb-3">
-        <select class="form-select" id="inputBranza" aria-label="Floating label select example" required>
+        <select class="form-select" id="inputBranza" aria-label="Floating label select example">
             <option value="" disabled selected>Wybierz branżę</option>
             <option value="Finanse">Finanse</option>
             <option value="Informatyka">Informatyka</option>
@@ -53,7 +60,7 @@
         </div>
     </div>
     <div>
-        <button type="submit" class="btn btn-primary">Zapisz</button>
+        <button type="submit" class="btn btn-primary" [disabled]="customerForm.invalid">Zapisz</button>
     </div>
 
     <!-- <div>
@@ -63,6 +70,6 @@
         <button class="btn btn-primary" id="clear-form-button" onclick="clearForm()">Clear Form</button>
     </div> -->
 
-    
-    
+
+
 </form>

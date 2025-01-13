@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Customer } from '../../models/customer';
 import { CustomerService } from '../../services/customer.service';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-customer-form',
@@ -19,11 +20,17 @@ export class CustomerFormComponent {
   ) { }
 
   customer: Customer = new Customer();
-  saveData() {
+  saveData(form: NgForm) {
     console.log(this.customer);
-    this.customerService.addCustomer(this.customer);
-    this.router.navigate(['/invoice/customer-list']);
-    
+    console.log(form);
+    console.log(form.valid);
+    if (form.valid) {
+      this.customerService.addCustomer(this.customer);
+      this.router.navigate(['/invoice/customer-list']);
+    } else {
+      console.log("wrong form");
+
+    }
   }
 
 }
