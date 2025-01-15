@@ -1,20 +1,21 @@
 {{customer | json}}
 <form id="client-form" (ngSubmit)="saveData(customerForm)" class="" #customerForm="ngForm">
     <input type="hidden" id="editIndex" value="">
+
     <div class="mb-3">
         <label for="inputName" class="form-label">Nazwa Firmy</label>
-        <input type="text" class="form-control" id="inputName" name="name" #name="ngModel" [(ngModel)]="customer.name"
-            required>
+        <input type="text" class="form-control" id="inputName" name="name" #name="ngModel" [(ngModel)]="customer.name" required>
         <!-- <div class="invalid-feedback" [hidden]="name.valid || name.untouched" class="alert alert-danger">Pole nie może być puste</div> -->
-        <div class="alert alert-danger" *ngIf="name.invalid && customerForm.submitted">Pole nie może być puste</div>
+        <!-- <div class="alert alert-danger" *ngIf="name.invalid && customerForm.submitted">Pole nie może być puste</div> -->
+        <div class="alert alert-danger" [hidden]="name.untouched || name.valid">Pole nie może być puste</div>
     </div>
+    
     <div class="mb-3">
         <label for="inputNIP" class="form-label">NIP</label>
-        <input type="text" class="form-control" title="NIP musi składać się z 10 cyfr" id="inputNIP" name="nip"
-            #nip="ngModel" [(ngModel)]="customer.nip" required>
-        <div class="invalid-feedback" [hidden]="nip.untouched || nip.valid" class="alert alert-danger">Pole nie może być
-            puste</div>
+        <input type="text" class="form-control" title="NIP musi składać się z 10 cyfr" id="inputNIP" name="nip" #nip="ngModel" [(ngModel)]="customer.nip" required>
+        <div class="alert alert-danger" [hidden]="nip.untouched || nip.valid">Pole nie może być puste</div>
     </div>
+    
     <div class="mb-3">
         <label for="inputMiasto" class="form-label">Miasto</label>
         <input type="text" class="form-control" id="inputMiasto" placeholder="Kraków">
@@ -28,8 +29,8 @@
         <input type="text" class="form-control" id="inputNumber">
     </div>
     <div class="mb-3">
-        <label for="inputNumberM" class="form-label">Numer Mieszkania</label>
-        <input type="number" class="form-control" id="inputNumberM">
+        <label for="inputNumerMieszkania" class="form-label">Numer Mieszkania</label>
+        <input type="number" class="form-control" id="inputNumerMieszkania">
     </div>
     <div class="mb-3">
         <label for="inputKod" class="form-label">Kod Pocztowy</label>

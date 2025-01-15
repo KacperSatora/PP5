@@ -3,6 +3,7 @@ import { Customer } from '../models/customer';
 import { Router } from '@angular/router';
 import { CustomerService } from '../services/customer.service';
 import { CustomerListElementComponentComponent } from '../components/customer-list-element-component/customer-list-element-component.component';
+import { Invoice } from '../models/invoice';
 
 @Component({
   selector: 'app-customer-list-component',
@@ -20,7 +21,9 @@ export class CustomerListComponentComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.customerList = this.customerService.getCustomer();
+    this.customerService.getCustomers().subscribe((data: Customer[]) => {
+      this.customerList = data;
+    });
   }
   ngOnDestroy(): void {
     console.log("Zamykam komponent");

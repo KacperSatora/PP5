@@ -1,29 +1,52 @@
 import { Injectable } from '@angular/core';
 import { Customer } from '../models/customer';
+import { HttpClient } from '@angular/common/http';
+import { map, Observable, Subscription } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CustomerService {
 
-  constructor() { }
+  constructor(
+    private httpClient: HttpClient
+  ) { }
 
   private customerList: Customer[] = [];
+  private baseUrl: string = "http://localhost:3000/customers"
 
-  addCustomer(customer: Customer): void {
+  addCustomer(customer: Customer): Observable<Customer> {
     this.customerList.push(customer);
+
+    return this.httpClient.post<Customer>(
+      this.baseUrl, customer
+    )
   }
 
   getCustomer(): Customer[] {
     return this.customerList;
   }
 
+  // getCustomers(): Observable<Customer[]> {
+  //   return this.httpClient.get<Customer[]> (
+  //     this.baseUrl
+  //   )
+  // }
+
+
+  getCustomers(): Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>(
+      this.baseUrl
+    ).pipe(
+      map((customers: Customer[]) =>
+        customers.map((customer: Customer) =>
+          new Customer().deserialize(customer)))
+    )
+  }
+
   deleteCustomer(customer: Customer): void {
     // temporary
-    // this.customerList.splice(this.customerList.indexOf(customer), 1);
-    
+    this.customerList.splice(this.customerList.indexOf(customer), 1);
 
-    this.customerList = this.customerList.filter(cs => cs.nip != customer.nip)
-    console.log(this.customerList);
+    // this.customerList = this.customerList.filter(cs => cs.nip !== customer.nip)
+    // console.log(this.customerList);
   }
 }
