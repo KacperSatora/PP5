@@ -5,20 +5,15 @@ import { map, Observable, Subscription } from 'rxjs';
 
 @Injectable()
 export class CustomerService {
-
-  constructor(
-    private httpClient: HttpClient
-  ) { }
+  constructor(private httpClient: HttpClient) {}
 
   private customerList: Customer[] = [];
-  private baseUrl: string = "http://localhost:3000/customers"
+  private baseUrl: string = 'http://localhost:3000/customers';
 
   addCustomer(customer: Customer): Observable<Customer> {
     this.customerList.push(customer);
 
-    return this.httpClient.post<Customer>(
-      this.baseUrl, customer
-    )
+    return this.httpClient.post<Customer>(this.baseUrl, customer);
   }
 
   getCustomer(): Customer[] {
@@ -31,15 +26,16 @@ export class CustomerService {
   //   )
   // }
 
-
   getCustomers(): Observable<Customer[]> {
-    return this.httpClient.get<Customer[]>(
-      this.baseUrl
-    ).pipe(
-      map((customers: Customer[]) =>
-        customers.map((customer: Customer) =>
-          new Customer().deserialize(customer)))
-    )
+    return this.httpClient
+      .get<Customer[]>(this.baseUrl)
+      .pipe(
+        map((customers: Customer[]) =>
+          customers.map((customer: Customer) =>
+            new Customer().deserialize(customer),
+          ),
+        ),
+      );
   }
 
   deleteCustomer(customer: Customer): void {

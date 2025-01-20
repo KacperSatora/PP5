@@ -6,15 +6,15 @@ $primary-color: red;
 @import "../node_modules/bootstrap/scss/bootstrap";
 
 body {
-    .d-flex {
-        form {
-            .last-element label {
-                background-color: $primary-color;
-            }
+  .d-flex {
+    form {
+      .last-element label {
+        background-color: $primary-color;
+      }
 
-            .first-element label {
-                background-color: black;
-            }
-        }
+      .first-element label {
+        background-color: black;
+      }
     }
+  }
 }

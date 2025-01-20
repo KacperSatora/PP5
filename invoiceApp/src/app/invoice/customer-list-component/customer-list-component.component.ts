@@ -9,16 +9,15 @@ import { Invoice } from '../models/invoice';
   selector: 'app-customer-list-component',
   standalone: false,
   templateUrl: './customer-list-component.component.html',
-  styleUrl: './customer-list-component.component.scss'
+  styleUrl: './customer-list-component.component.scss',
 })
 export class CustomerListComponentComponent implements OnInit, OnDestroy {
   customerList: Customer[] = [];
 
   constructor(
     private customerService: CustomerService,
-    private router: Router
-  ) {
-  }
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.customerService.getCustomers().subscribe((data: Customer[]) => {
@@ -26,18 +25,15 @@ export class CustomerListComponentComponent implements OnInit, OnDestroy {
     });
   }
   ngOnDestroy(): void {
-    console.log("Zamykam komponent");
-
+    console.log('Zamykam komponent');
   }
 
   deleteCustomer(customer: Customer) {
-    console.log("Rodzic otrzymał");
-    this.customerService.deleteCustomer(customer)
+    console.log('Rodzic otrzymał');
+    this.customerService.deleteCustomer(customer);
   }
-
 
   redirectToForm() {
-    this.router.navigate(['invoice/customer-form'])
+    this.router.navigate(['invoice/customer-form']);
   }
-
 }

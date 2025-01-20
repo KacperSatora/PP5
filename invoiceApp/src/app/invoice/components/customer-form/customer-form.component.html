@@ -1,76 +1,130 @@
-{{customer | json}}
-<form id="client-form" (ngSubmit)="saveData(customerForm)" class="" #customerForm="ngForm">
-    <input type="hidden" id="editIndex" value="">
+{{ customer | json }}
+<form
+  id="client-form"
+  (ngSubmit)="saveData(customerForm)"
+  class=""
+  #customerForm="ngForm"
+>
+  <input type="hidden" id="editIndex" value="" />
 
-    <div class="mb-3">
-        <label for="inputName" class="form-label">Nazwa Firmy</label>
-        <input type="text" class="form-control" id="inputName" name="name" #name="ngModel" [(ngModel)]="customer.name" required>
-        <!-- <div class="invalid-feedback" [hidden]="name.valid || name.untouched" class="alert alert-danger">Pole nie może być puste</div> -->
-        <!-- <div class="alert alert-danger" *ngIf="name.invalid && customerForm.submitted">Pole nie może być puste</div> -->
-        <div class="alert alert-danger" [hidden]="name.untouched || name.valid">Pole nie może być puste</div>
+  <div class="mb-3">
+    <label for="inputName" class="form-label">Nazwa Firmy</label>
+    <input
+      type="text"
+      class="form-control"
+      id="inputName"
+      name="name"
+      #name="ngModel"
+      [(ngModel)]="customer.name"
+      required
+    />
+    <!-- <div class="invalid-feedback" [hidden]="name.valid || name.untouched" class="alert alert-danger">Pole nie może być puste</div> -->
+    <!-- <div class="alert alert-danger" *ngIf="name.invalid && customerForm.submitted">Pole nie może być puste</div> -->
+    <div class="alert alert-danger" [hidden]="name.untouched || name.valid">
+      Pole nie może być puste
     </div>
-    
-    <div class="mb-3">
-        <label for="inputNIP" class="form-label">NIP</label>
-        <input type="text" class="form-control" title="NIP musi składać się z 10 cyfr" id="inputNIP" name="nip" #nip="ngModel" [(ngModel)]="customer.nip" required>
-        <div class="alert alert-danger" [hidden]="nip.untouched || nip.valid">Pole nie może być puste</div>
-    </div>
-    
-    <div class="mb-3">
-        <label for="inputMiasto" class="form-label">Miasto</label>
-        <input type="text" class="form-control" id="inputMiasto" placeholder="Kraków">
-    </div>
-    <div class="mb-3">
-        <label for="inputUlica" class="form-label">Ulica</label>
-        <input type="text" class="form-control" id="inputUlica" placeholder="Krakowska">
-    </div>
-    <div class="mb-3">
-        <label for="inputNumber" class="form-label">Numer Domu</label>
-        <input type="text" class="form-control" id="inputNumber">
-    </div>
-    <div class="mb-3">
-        <label for="inputNumerMieszkania" class="form-label">Numer Mieszkania</label>
-        <input type="number" class="form-control" id="inputNumerMieszkania">
-    </div>
-    <div class="mb-3">
-        <label for="inputKod" class="form-label">Kod Pocztowy</label>
-        <input type="text" class="form-control" pattern="\d{2}-\d{3}" title="Kod pocztowy musi mieć format xx-xxx"
-            id="inputKod">
-    </div>
-    <div class="mb-3">
-        <label for="inputUwagi">Uwagi</label>
-        <textarea class="form-control" placeholder="Zostaw uwagi tutaj" id="inputUwagi"></textarea>
-    </div>
-    <div class="form-floating mb-3">
-        <select class="form-select" id="inputBranza" aria-label="Floating label select example">
-            <option value="" disabled selected>Wybierz branżę</option>
-            <option value="Finanse">Finanse</option>
-            <option value="Informatyka">Informatyka</option>
-            <option value="Motoryzacja">Motoryzacja</option>
-        </select>
-    </div>
-    <div class="">
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="inputCheck">
-            <label class="form-check-label" for="inputCheck">Aktywny</label>
-        </div>
-    </div>
-    <div class="col-12">
-        <div class="form-check">
-            <input type="hidden" id="editIndex" value="">
-        </div>
-    </div>
-    <div>
-        <button type="submit" class="btn btn-primary" [disabled]="customerForm.invalid">Zapisz</button>
-    </div>
+  </div>
 
-    <!-- <div>
+  <div class="mb-3">
+    <label for="inputNIP" class="form-label">NIP</label>
+    <input
+      type="text"
+      class="form-control"
+      title="NIP musi składać się z 10 cyfr"
+      id="inputNIP"
+      name="nip"
+      #nip="ngModel"
+      [(ngModel)]="customer.nip"
+      required
+    />
+    <div class="alert alert-danger" [hidden]="nip.untouched || nip.valid">
+      Pole nie może być puste
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="inputMiasto" class="form-label">Miasto</label>
+    <input
+      type="text"
+      class="form-control"
+      id="inputMiasto"
+      placeholder="Kraków"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="inputUlica" class="form-label">Ulica</label>
+    <input
+      type="text"
+      class="form-control"
+      id="inputUlica"
+      placeholder="Krakowska"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="inputNumber" class="form-label">Numer Domu</label>
+    <input type="text" class="form-control" id="inputNumber" />
+  </div>
+  <div class="mb-3">
+    <label for="inputNumerMieszkania" class="form-label"
+      >Numer Mieszkania</label
+    >
+    <input type="number" class="form-control" id="inputNumerMieszkania" />
+  </div>
+  <div class="mb-3">
+    <label for="inputKod" class="form-label">Kod Pocztowy</label>
+    <input
+      type="text"
+      class="form-control"
+      pattern="\d{2}-\d{3}"
+      title="Kod pocztowy musi mieć format xx-xxx"
+      id="inputKod"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="inputUwagi">Uwagi</label>
+    <textarea
+      class="form-control"
+      placeholder="Zostaw uwagi tutaj"
+      id="inputUwagi"
+    ></textarea>
+  </div>
+  <div class="form-floating mb-3">
+    <select
+      class="form-select"
+      id="inputBranza"
+      aria-label="Floating label select example"
+    >
+      <option value="" disabled selected>Wybierz branżę</option>
+      <option value="Finanse">Finanse</option>
+      <option value="Informatyka">Informatyka</option>
+      <option value="Motoryzacja">Motoryzacja</option>
+    </select>
+  </div>
+  <div class="">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="inputCheck" />
+      <label class="form-check-label" for="inputCheck">Aktywny</label>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="form-check">
+      <input type="hidden" id="editIndex" value="" />
+    </div>
+  </div>
+  <div>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="customerForm.invalid"
+    >
+      Zapisz
+    </button>
+  </div>
+
+  <!-- <div>
         <button class="btn btn-primary" id="fill-data-button" onclick="fillData()">Fill</button>
         <button class="btn btn-primary" id="show-form-button" onclick="showForm()">Show Form</button>
         <button class="btn btn-primary" id="show-customers-button" onclick="hideForm()">Show Customers</button>
         <button class="btn btn-primary" id="clear-form-button" onclick="clearForm()">Clear Form</button>
     </div> -->
-
-
-
 </form>

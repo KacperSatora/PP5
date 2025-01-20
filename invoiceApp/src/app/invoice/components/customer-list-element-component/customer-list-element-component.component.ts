@@ -5,7 +5,7 @@ import { Customer } from '../../models/customer';
   selector: 'app-customer-list-element-component',
   standalone: false,
   templateUrl: './customer-list-element-component.component.html',
-  styleUrl: './customer-list-element-component.component.scss'
+  styleUrl: './customer-list-element-component.component.scss',
 })
 export class CustomerListElementComponentComponent {
   @Input()
@@ -14,17 +14,12 @@ export class CustomerListElementComponentComponent {
   deletedCustomerEvent = new EventEmitter<Customer>();
 
   onDeletedCustomer(customer: Customer) {
-    this.deletedCustomerEvent.emit(customer)
+    this.deletedCustomerEvent.emit(customer);
     console.log(customer.nip);
-    
   }
 
   deleteCustomer() {
     console.log('kasuje klienta', this.customer.nip);
-    this.deletedCustomerEvent.emit(this.customer)
-    
+    this.deletedCustomerEvent.emit(this.customer);
   }
-
-
-
 }

@@ -4,10 +4,11 @@ import { CustomerFormComponent } from './invoice/components/customer-form/custom
 import { CustomerListComponentComponent } from './invoice/customer-list-component/customer-list-component.component';
 
 export const routes: Routes = [
-    { path: 'product-form', component: ProductFormComponent },
-    {
-        path: 'invoice',
-        loadChildren: () => import('./invoice/invoice.module').then(m => m.InvoiceModule)
-    },
-    // { path: 'customer-list', component: CustomerListComponentComponent }
+  { path: 'product-form', component: ProductFormComponent },
+  {
+    path: 'invoice',
+    loadChildren: () =>
+      import('./invoice/invoice.module').then((m) => m.InvoiceModule),
+  },
+  // { path: 'customer-list', component: CustomerListComponentComponent }
 ];

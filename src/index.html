@@ -1,82 +1,127 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <link rel="stylesheet" href="css/custom.css" crossorigin="anonymous">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link rel="stylesheet" href="css/custom.css" crossorigin="anonymous" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form SPA</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="p-5">
-        <form onsubmit="addCustomer(event)" id="customer-form" class="">
-
-            <div class="mb-3">
-                <label for="nazwa-firmy" class="form-label">Nazwa Firmy</label>
-                <input type="text" class="form-control" id="nazwa-firmy" required>
-            </div>
-            <div class="mb-3">
-                <label for="nip" class="form-label">NIP</label>
-                <input type="number" class="form-control" id="nip" required>
-            </div>
-            <div class="mb-3">
-                <label for="miasto" class="form-label">Miasto</label>
-                <input type="text" class="form-control" id="miasto" required>
-            </div>
-            <div class="mb-3">
-                <label for="ulica" class="form-label">Ulica</label>
-                <input type="text" class="form-control" id="ulica" required>
-            </div>
-            <div class="mb-3">
-                <label for="numer-domu" class="form-label">Numer Domu</label>
-                <input type="number" class="form-control" id="numer-domu" required>
-            </div>
-            <div class="mb-3">
-                <label for="number-mieszkania" class="form-label">Numer Mieszkania</label>
-                <input type="numer" class="form-control" id="number-mieszkania">
-            </div>
-            <div class="mb-3">
-                <label for="kod-pocztowy" class="form-label">Kod Pocztowy</label>
-                <input type="number" class="form-control" id="kod-pocztowy" required>
-            </div>
-            <div class="form-floating  mb-3">
-                <textarea class="form-control" placeholder="uwagi" id="uwagi"></textarea>
-                <label for="uwagi">Uwagi</label>
-            </div>
-            <div class="form-floating  mb-3">
-                <select class="form-select" id="branza" aria-label="Floating label select example">
-                    <option selected>Wybierz</option>
-                    <option value="1">IT</option>
-                    <option value="2">Transport</option>
-                    <option value="3">Handel</option>
-                </select>
-                <label for="branza">Branża</label>
-            </div>
-            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
-                <label class="btn btn-outline-primary" for="btncheck1">Checkbox 1</label>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-
-        </form>
-
-        <div class="customer-list pb-3">
-            <ul class="list-group" id="customer-list"></ul>
+      <form onsubmit="addCustomer(event)" id="customer-form" class="">
+        <div class="mb-3">
+          <label for="nazwa-firmy" class="form-label">Nazwa Firmy</label>
+          <input type="text" class="form-control" id="nazwa-firmy" required />
+        </div>
+        <div class="mb-3">
+          <label for="nip" class="form-label">NIP</label>
+          <input type="number" class="form-control" id="nip" required />
+        </div>
+        <div class="mb-3">
+          <label for="miasto" class="form-label">Miasto</label>
+          <input type="text" class="form-control" id="miasto" required />
+        </div>
+        <div class="mb-3">
+          <label for="ulica" class="form-label">Ulica</label>
+          <input type="text" class="form-control" id="ulica" required />
+        </div>
+        <div class="mb-3">
+          <label for="numer-domu" class="form-label">Numer Domu</label>
+          <input type="number" class="form-control" id="numer-domu" required />
+        </div>
+        <div class="mb-3">
+          <label for="number-mieszkania" class="form-label"
+            >Numer Mieszkania</label
+          >
+          <input type="numer" class="form-control" id="number-mieszkania" />
+        </div>
+        <div class="mb-3">
+          <label for="kod-pocztowy" class="form-label">Kod Pocztowy</label>
+          <input
+            type="number"
+            class="form-control"
+            id="kod-pocztowy"
+            required
+          />
+        </div>
+        <div class="form-floating mb-3">
+          <textarea
+            class="form-control"
+            placeholder="uwagi"
+            id="uwagi"
+          ></textarea>
+          <label for="uwagi">Uwagi</label>
+        </div>
+        <div class="form-floating mb-3">
+          <select
+            class="form-select"
+            id="branza"
+            aria-label="Floating label select example"
+          >
+            <option selected>Wybierz</option>
+            <option value="1">IT</option>
+            <option value="2">Transport</option>
+            <option value="3">Handel</option>
+          </select>
+          <label for="branza">Branża</label>
+        </div>
+        <div
+          class="btn-group"
+          role="group"
+          aria-label="Basic checkbox toggle button group"
+        >
+          <input
+            type="checkbox"
+            class="btn-check"
+            id="btncheck1"
+            autocomplete="off"
+          />
+          <label class="btn btn-outline-primary" for="btncheck1"
+            >Checkbox 1</label
+          >
         </div>
 
-        <div>
-            <button class="btn btn-primary" id="fill-data-button" onclick="fillData()">Fill</button>
-            <button class="btn btn-primary" id="show-form-button" onclick="showForm()">Show Form</button>
-            <button class="btn btn-primary" id="show-customers-button" onclick="hideForm()">Show Customers</button>
-            <button class="btn btn-primary" id="clear-form-button" onclick="clearForm()">Clear Form</button>
-        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+      <div class="customer-list pb-3">
+        <ul class="list-group" id="customer-list"></ul>
+      </div>
+
+      <div>
+        <button
+          class="btn btn-primary"
+          id="fill-data-button"
+          onclick="fillData()"
+        >
+          Fill
+        </button>
+        <button
+          class="btn btn-primary"
+          id="show-form-button"
+          onclick="showForm()"
+        >
+          Show Form
+        </button>
+        <button
+          class="btn btn-primary"
+          id="show-customers-button"
+          onclick="hideForm()"
+        >
+          Show Customers
+        </button>
+        <button
+          class="btn btn-primary"
+          id="clear-form-button"
+          onclick="clearForm()"
+        >
+          Clear Form
+        </button>
+      </div>
     </div>
 
     <script src="customer.js"></script>
     <script src="main.js"></script>
-
-</body>
-
+  </body>
 </html>

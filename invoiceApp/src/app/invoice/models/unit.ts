@@ -1,5 +1,5 @@
 export enum Unit {
-    service = 'service',
-    good = 'good',
-    hour = 'hour'
+  service = 'service',
+  good = 'good',
+  hour = 'hour',
 }

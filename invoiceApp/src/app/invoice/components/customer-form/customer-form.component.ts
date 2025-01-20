@@ -10,14 +10,13 @@ import { NgForm } from '@angular/forms';
   selector: 'app-customer-form',
   standalone: false,
   templateUrl: './customer-form.component.html',
-  styleUrl: './customer-form.component.scss'
+  styleUrl: './customer-form.component.scss',
 })
 export class CustomerFormComponent {
-
   constructor(
     private customerService: CustomerService,
-    private router: Router
-  ) { }
+    private router: Router,
+  ) {}
 
   customer: Customer = new Customer();
   saveData(form: NgForm) {
@@ -25,16 +24,17 @@ export class CustomerFormComponent {
     console.log(form);
     console.log(form.valid);
     if (form.valid) {
-      this.customerService.addCustomer(this.customer).subscribe(() => {
-        alert("działa");
-        this.router.navigate(['/invoice/customer-list']);
-      }, (error: any) => {
-        console.log(error);
-      });
+      this.customerService.addCustomer(this.customer).subscribe(
+        () => {
+          alert('działa');
+          this.router.navigate(['/invoice/customer-list']);
+        },
+        (error: any) => {
+          console.log(error);
+        },
+      );
     } else {
-      console.log("wrong form");
-
+      console.log('wrong form');
     }
   }
-
 }
