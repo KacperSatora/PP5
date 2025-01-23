@@ -1,17 +1,23 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { CustomerFormComponent } from './components/customer-form/customer-form.component';
-import { ProductFormComponent } from '../product-form/product-form.component';
 import { CustomerListComponentComponent } from './customer-list-component/customer-list-component.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { SupplierFormComponent } from './components/supplier-form/supplier-form.component';
+import { SupplierListComponent } from './components/supplier-list/supplier-list.component';
+import { ProductFormComponent } from './components/product-form/product-form.component';
 
 const routes: Routes = [
   { path: 'customer-form', component: CustomerFormComponent },
   { path: 'customer-list', component: CustomerListComponentComponent },
+  { path: 'product-form', component: ProductFormComponent },
+  { path: 'product-list', component: ProductListComponent },
+  { path: 'supplier-form', component: SupplierFormComponent },
+  { path: 'supplier-list', component: SupplierListComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class InvoiceRoutingModule {}
+export class InvoiceRoutingModule { }

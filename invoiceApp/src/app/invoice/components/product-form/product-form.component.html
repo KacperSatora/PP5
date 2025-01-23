@@ -1,0 +1,46 @@
+{{ product | json }}
+<form id="client-form" (ngSubmit)="saveData(productForm)" class="" #productForm="ngForm">
+  <input type="hidden" id="editIndex" value="" />
+
+  <div class="mb-3">
+    <label for="inputName" class="form-label">Nazwa Produktu</label>
+    <input type="text" class="form-control" id="inputName" name="name" #name="ngModel" [(ngModel)]="product.name"
+      required />
+    <!-- <div class="invalid-feedback" [hidden]="name.valid || name.untouched" class="alert alert-danger">Pole nie może być puste</div> -->
+    <!-- <div class="alert alert-danger" *ngIf="name.invalid && productForm.submitted">Pole nie może być puste</div> -->
+    <div class="alert alert-danger" [hidden]="name.untouched || name.valid">
+      Pole nie może być puste
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="inputCategory" class="form-label">Kategoria</label>
+    <input type="text" class="form-control" title="" id="inputCategory" name="category"
+      #category="ngModel" [(ngModel)]="product.category" required />
+    <div class="alert alert-danger" [hidden]="category.untouched || category.valid">
+      Pole nie może być puste
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="inputMiasto" class="form-label">Cena</label>
+    <input type="text" class="form-control" id="inputMiasto" placeholder="Kraków" />
+  </div>
+  <div class="mb-3">
+    <label for="inputUlica" class="form-label">Podatek</label>
+    <input type="text" class="form-control" id="inputUlica" placeholder="Krakowska" />
+  </div>
+
+  <div>
+    <button type="submit" class="btn btn-primary" [disabled]="productForm.invalid">
+      Zapisz
+    </button>
+  </div>
+
+  <!-- <div>
+        <button class="btn btn-primary" id="fill-data-button" onclick="fillData()">Fill</button>
+        <button class="btn btn-primary" id="show-form-button" onclick="showForm()">Show Form</button>
+        <button class="btn btn-primary" id="show-customers-button" onclick="hideForm()">Show Customers</button>
+        <button class="btn btn-primary" id="clear-form-button" onclick="clearForm()">Clear Form</button>
+    </div> -->
+</form>
