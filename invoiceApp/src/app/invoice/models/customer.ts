@@ -9,7 +9,7 @@ export class Customer {
   numerMieszkania = '';
   kod = '';
   uwagi = '';
-  branza = '';
+  branza = ['Finanse', 'Informatyka', 'Motoryzacja'];
   check = true;
 
   getAddress() {

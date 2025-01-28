@@ -18,23 +18,20 @@ export class ProductFormComponent {
 
   product: Product = new Product();
   saveData(form: NgForm) {
-      console.log(this.product);
-      console.log(form);
-      console.log(form.valid);
-      if (form.valid) {
-        this.productService.addProduct(this.product).subscribe(
-          () => {
-            alert('działa');
-            this.router.navigate(['/invoice/product-list']);
-          },
-          (error: any) => {
-            console.log(error);
-          },
-        );
-      } else {
-        console.log('wrong form');
-      }
+    if (form.valid) {
+      this.productService.addProduct(this.product).subscribe(
+        () => {
+          alert('działa');
+          this.router.navigate(['/invoice/product-list']);
+        },
+        (error: any) => {
+          console.log(error);
+        },
+      );
+    } else {
+      console.log('wrong form');
     }
+  }
 }
 
 

@@ -24,11 +24,11 @@
 
   <div class="mb-3">
     <label for="inputMiasto" class="form-label">Cena</label>
-    <input type="text" class="form-control" id="inputMiasto" placeholder="Kraków" />
+    <input type="text" class="form-control" id="inputPrice" placeholder="" name="price" #price="ngModel" [(ngModel)]="product.price" />
   </div>
   <div class="mb-3">
     <label for="inputUlica" class="form-label">Podatek</label>
-    <input type="text" class="form-control" id="inputUlica" placeholder="Krakowska" />
+    <input type="text" class="form-control" id="inputTax" placeholder="" name="tax" #tax="ngModel" [(ngModel)]="product.tax" />
   </div>
 
   <div>

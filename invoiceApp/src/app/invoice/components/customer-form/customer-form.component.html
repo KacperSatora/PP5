@@ -1,23 +1,11 @@
 {{ customer | json }}
-<form
-  id="client-form"
-  (ngSubmit)="saveData(customerForm)"
-  class=""
-  #customerForm="ngForm"
->
+<form id="client-form" (ngSubmit)="saveData(customerForm)" class="" #customerForm="ngForm">
   <input type="hidden" id="editIndex" value="" />
 
   <div class="mb-3">
     <label for="inputName" class="form-label">Nazwa Firmy</label>
-    <input
-      type="text"
-      class="form-control"
-      id="inputName"
-      name="name"
-      #name="ngModel"
-      [(ngModel)]="customer.name"
-      required
-    />
+    <input type="text" class="form-control" id="inputName" name="name" #name="ngModel" [(ngModel)]="customer.name"
+      required />
     <!-- <div class="invalid-feedback" [hidden]="name.valid || name.untouched" class="alert alert-danger">Pole nie może być puste</div> -->
     <!-- <div class="alert alert-danger" *ngIf="name.invalid && customerForm.submitted">Pole nie może być puste</div> -->
     <div class="alert alert-danger" [hidden]="name.untouched || name.valid">
@@ -27,16 +15,8 @@
 
   <div class="mb-3">
     <label for="inputNIP" class="form-label">NIP</label>
-    <input
-      type="text"
-      class="form-control"
-      title="NIP musi składać się z 10 cyfr"
-      id="inputNIP"
-      name="nip"
-      #nip="ngModel"
-      [(ngModel)]="customer.nip"
-      required
-    />
+    <input type="text" class="form-control" title="" id="inputNIP" name="nip" #nip="ngModel" [(ngModel)]="customer.nip"
+      required />
     <div class="alert alert-danger" [hidden]="nip.untouched || nip.valid">
       Pole nie może być puste
     </div>
@@ -44,56 +24,56 @@
 
   <div class="mb-3">
     <label for="inputMiasto" class="form-label">Miasto</label>
-    <input
-      type="text"
-      class="form-control"
-      id="inputMiasto"
-      placeholder="Kraków"
-    />
+    <input type="text" class="form-control" title="" id="inputMiasto" name="miasto" #miasto="ngModel"
+      [(ngModel)]="customer.miasto" required />
+    <div class="alert alert-danger" [hidden]="miasto.untouched || miasto.valid">
+      Pole nie może być puste
+    </div>
   </div>
+
+
+
+
   <div class="mb-3">
     <label for="inputUlica" class="form-label">Ulica</label>
-    <input
-      type="text"
-      class="form-control"
-      id="inputUlica"
-      placeholder="Krakowska"
-    />
+    <input type="text" class="form-control" title="" id="inputUlica" name="ulica" #ulica="ngModel"
+      [(ngModel)]="customer.ulica" required />
+    <div class="alert alert-danger" [hidden]="ulica.untouched || ulica.valid">
+      Pole nie może być puste
+    </div>
   </div>
   <div class="mb-3">
     <label for="inputNumber" class="form-label">Numer Domu</label>
-    <input type="text" class="form-control" id="inputNumber" />
+    <input type="text" class="form-control" title="" id="inputnumber" name="number" #number="ngModel"
+      [(ngModel)]="customer.number" required />
+    <div class="alert alert-danger" [hidden]="number.untouched || number.valid">
+      Pole nie może być puste
+    </div>
   </div>
   <div class="mb-3">
-    <label for="inputNumerMieszkania" class="form-label"
-      >Numer Mieszkania</label
-    >
-    <input type="number" class="form-control" id="inputNumerMieszkania" />
+    <label for="inputNumerMieszkania" class="form-label">Numer Mieszkania</label>
+    <input type="text" class="form-control" title="" id="inputNumerMieszkania" name="numerMieszkania"
+      #numerMieszkania="ngModel" [(ngModel)]="customer.numerMieszkania" required />
+    <div class="alert alert-danger" [hidden]="numerMieszkania.untouched || numerMieszkania.valid">
+      Pole nie może być puste
+    </div>
   </div>
   <div class="mb-3">
     <label for="inputKod" class="form-label">Kod Pocztowy</label>
-    <input
-      type="text"
-      class="form-control"
-      pattern="\d{2}-\d{3}"
-      title="Kod pocztowy musi mieć format xx-xxx"
-      id="inputKod"
-    />
+    <input type="text" class="form-control" pattern="\d{2}-\d{3}" title="" id="inputKod" name="kod" #kod="ngModel"
+      [(ngModel)]="customer.kod" required />
+    <div class="alert alert-danger" [hidden]="kod.untouched || nip.valid">
+      Pole nie może być puste
+    </div>
   </div>
   <div class="mb-3">
     <label for="inputUwagi">Uwagi</label>
-    <textarea
-      class="form-control"
-      placeholder="Zostaw uwagi tutaj"
-      id="inputUwagi"
-    ></textarea>
+    <textarea class="form-control" placeholder="Zostaw uwagi tutaj" id="inputUwagi" name="uwagi" #uwagi="ngModel"
+      [(ngModel)]="customer.uwagi"></textarea>
   </div>
   <div class="form-floating mb-3">
-    <select
-      class="form-select"
-      id="inputBranza"
-      aria-label="Floating label select example"
-    >
+    <select class="form-select" id="inputBranza" aria-label="Floating label select example" name="branza"
+      #branza="ngModel" [(ngModel)]="customer.branza">
       <option value="" disabled selected>Wybierz branżę</option>
       <option value="Finanse">Finanse</option>
       <option value="Informatyka">Informatyka</option>
@@ -102,21 +82,18 @@
   </div>
   <div class="">
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="inputCheck" />
+      <input class="form-check-input" type="checkbox" id="inputCheck" name="inputCheck" #inputCheck="ngModel"
+        [(ngModel)]="customer.check" />
       <label class="form-check-label" for="inputCheck">Aktywny</label>
     </div>
   </div>
   <div class="col-12">
     <div class="form-check">
-      <input type="hidden" id="editIndex" value="" />
+      <input type="hidden" id="editIndex" value="" name="editCheck"/>
     </div>
   </div>
   <div>
-    <button
-      type="submit"
-      class="btn btn-primary"
-      [disabled]="customerForm.invalid"
-    >
+    <button type="submit" class="btn btn-primary" [disabled]="customerForm.invalid">
       Zapisz
     </button>
   </div>
