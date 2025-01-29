@@ -1,0 +1,15 @@
+services:
+  angular:
+    image: kacpersatora/pp5:1.0
+    build:
+      context: ./invoiceApp
+      dockerfile: Dockerfile
+    ports:
+      - 4200:4200
+  jsonsrv:
+    image: kacpersatora/jsonsrv:1.0
+    build:
+      context: ./json-server
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
