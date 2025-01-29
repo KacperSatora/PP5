@@ -8,24 +8,11 @@ import { environment } from '../../../environments/environment';
 export class CustomerService {
   constructor(private httpClient: HttpClient) {}
 
-  private customerList: Customer[] = [];
   private baseUrl: string = environment.apiUrl + `/customers`;
 
   addCustomer(customer: Customer): Observable<Customer> {
-    this.customerList.push(customer);
-
     return this.httpClient.post<Customer>(this.baseUrl, customer);
   }
-
-  getCustomer(): Customer[] {
-    return this.customerList;
-  }
-
-  // getCustomers(): Observable<Customer[]> {
-  //   return this.httpClient.get<Customer[]> (
-  //     this.baseUrl
-  //   )
-  // }
 
   getCustomers(): Observable<Customer[]> {
     return this.httpClient
@@ -39,11 +26,7 @@ export class CustomerService {
       );
   }
 
-  deleteCustomer(customer: Customer): void {
-    // temporary
-    this.customerList.splice(this.customerList.indexOf(customer), 1);
-
-    // this.customerList = this.customerList.filter(cs => cs.nip !== customer.nip)
-    // console.log(this.customerList);
+  deleteCustomer(customer: Customer): Observable<Customer> {
+    return this.httpClient.delete<any>(`${this.baseUrl}/${customer.id}`);
   }
 }

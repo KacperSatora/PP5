@@ -1,6 +1,7 @@
 export class Customer {
   constructor() { }
 
+  id: string | undefined;
   name = '';
   nip = '';
   miasto = '';
@@ -9,7 +10,7 @@ export class Customer {
   numerMieszkania = '';
   kod = '';
   uwagi = '';
-  branza = ['Finanse', 'Informatyka', 'Motoryzacja'];
+  branza = '';
   check = true;
 
   getAddress() {

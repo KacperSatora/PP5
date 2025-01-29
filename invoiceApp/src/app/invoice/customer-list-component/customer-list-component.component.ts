@@ -30,7 +30,16 @@ export class CustomerListComponentComponent implements OnInit, OnDestroy {
 
   deleteCustomer(customer: Customer) {
     console.log('Rodzic otrzymał');
-    this.customerService.deleteCustomer(customer);
+    console.log('Usuwanie klienta', customer);
+    this.customerService.deleteCustomer(customer).subscribe(
+      () => {
+        this.customerList = this.customerList.filter(c => c.nip !== customer.nip);
+        console.log('Klient usunięty');
+      },
+      (error) => {
+        console.error('Błąd przy usuwaniu klienta', error);
+      }
+    )
   }
 
   redirectToForm() {

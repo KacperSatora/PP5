@@ -20,8 +20,8 @@ export class CustomerFormComponent {
   saveData(form: NgForm) {
     if (form.valid) {
       this.customerService.addCustomer(this.customer).subscribe(
-        () => {
-          alert('działa');
+        (result: Customer) => {
+          console.log(result)
           this.router.navigate(['/invoice/customer-list']);
         },
         (error: any) => {

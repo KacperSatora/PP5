@@ -1,19 +1,5 @@
 {
-  "customers": [
-    {
-      "id": "8b8a",
-      "name": "1",
-      "nip": "12",
-      "miasto": "",
-      "ulica": "",
-      "number": "",
-      "numerMieszkania": "",
-      "kod": "",
-      "uwagi": "",
-      "branza": "",
-      "check": true
-    }
-  ],
+  "customers": [],
   "products": [],
   "suppliers": []
 }
