@@ -33,7 +33,7 @@ export class ProductService {
       );
   }
 
-  deleteProduct(product: Product): void {
-    this.productList.splice(this.productList.indexOf(product), 1);
+  deleteProduct(product: Product): Observable<Product> {
+    return this.httpClient.delete<Product>(`${this.baseUrl}/${product.id}`);
   }
 }

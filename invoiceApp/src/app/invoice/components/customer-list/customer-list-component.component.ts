@@ -1,9 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Customer } from '../models/customer';
+import { Customer } from '../../models/customer';
 import { Router } from '@angular/router';
-import { CustomerService } from '../services/customer.service';
-import { CustomerListElementComponentComponent } from '../components/customer-list-element-component/customer-list-element-component.component';
-import { Invoice } from '../models/invoice';
+import { CustomerService } from '../../services/customer.service';
 
 @Component({
   selector: 'app-customer-list-component',

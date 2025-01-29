@@ -92,10 +92,11 @@
     </div>
   </div>
 
-  <div>
+  <div class="col-12">
     <button type="submit" class="btn btn-primary" [disabled]="customerForm.invalid">
       Zapisz
     </button>
+    <button class="btn btn-secondary" (click)="toList()">Pokaż listę</button>
   </div>
 
   <!-- <div>

@@ -1,6 +1,6 @@
 export class Product {
     constructor() { }
-
+    id: string | undefined;
     name = '';
     category = '';
     price = '';

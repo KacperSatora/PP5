@@ -1,1 +1,7 @@
-<p>supplier-list works!</p>
+<div class=" d-flex justify-content-center">
+    <app-supplier-list-element *ngFor="let supplier of supplierList" [supplier]="supplier"
+        (deletedSupplierEvent)="deleteSupplier($event)">
+    </app-supplier-list-element>
+
+    <button class="btn" (click)="redirectToForm()">return to form</button>
+</div>

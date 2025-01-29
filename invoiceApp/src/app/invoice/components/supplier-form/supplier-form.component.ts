@@ -16,12 +16,12 @@ export class SupplierFormComponent {
     private router: Router,
   ) { }
 
-  supplier: Supplier = new Supplier(Math.ceil(Math.random() * 10000));
+  supplier: Supplier = new Supplier();
   saveData(form: NgForm) {
     if (form.valid) {
       this.supplierService.addSupplier(this.supplier).subscribe(
-        () => {
-          alert('działa');
+        (result: Supplier) => {
+          console.log(result);
           this.router.navigate(['/invoice/supplier-list']);
         },
         (error: any) => {
@@ -31,6 +31,9 @@ export class SupplierFormComponent {
     } else {
       console.log('wrong form');
     }
+  }
+  toList() {
+    this.router.navigate(['/invoice/supplier-list'])
   }
 
 }

@@ -1,1 +1,5 @@
-<p>product-list works!</p>
+<div class=" d-flex justify-content-center">
+<app-product-list-element-component *ngFor="let product of productList" [product]="product"
+  (deletedProductEvent)="deleteProduct($event)"></app-product-list-element-component>
+
+<button class="btn" (click)="redirectToForm()">return to form</button></div>

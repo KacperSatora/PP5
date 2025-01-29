@@ -32,4 +32,8 @@ export class CustomerFormComponent {
       console.log('wrong form');
     }
   }
+
+  toList() {
+    this.router.navigate(['/invoice/customer-list'])
+  }
 }

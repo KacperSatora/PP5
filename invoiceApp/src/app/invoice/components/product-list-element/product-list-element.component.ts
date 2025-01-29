@@ -15,11 +15,9 @@ export class ProductListElementComponent {
 
   onDeletedProduct(Product: Product) {
     this.deletedProductEvent.emit(Product);
-    console.log(Product.price); // FIX! BAD IDEA
   }
 
   deleteProduct() {
-    console.log('kasuje klienta', this.product.price);
     this.deletedProductEvent.emit(this.product);
   }
 }

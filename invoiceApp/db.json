@@ -1,5 +1,19 @@
 {
-  "customers": [],
+  "customers": [
+    {
+      "id": "31b0",
+      "name": "uas",
+      "nip": "sd",
+      "miasto": "d",
+      "ulica": "dssd",
+      "number": "sd",
+      "numerMieszkania": "ds",
+      "kod": "32-020",
+      "uwagi": "",
+      "branza": "",
+      "check": true
+    }
+  ],
   "products": [],
   "suppliers": []
 }
